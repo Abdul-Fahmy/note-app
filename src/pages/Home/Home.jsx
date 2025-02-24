@@ -72,6 +72,8 @@ export default function Home() {
       let { data } = await axios.request(options);
       if (data.msg === "done") {
         toast.success("Note Added successfully");
+        values.title = '';
+        values.content = ''
         getUserNotes();
       }
     } catch (error) {
@@ -98,7 +100,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex  items-end justify-end mt-6 mr-20">
+      <div className="flex  items-end justify-end mt-6 pr-5">
         <Button
           className="bg-gray-900 text-white hover:!bg-gray-950"
           onClick={() => setIsOpen(true)}
@@ -106,11 +108,11 @@ export default function Home() {
           Add Note
         </Button>
       </div>
-      {(notesError === "not notes found") ? <div className="container flex justify-center items-center mt-6"><h2 className="font-semibold text-xl">No Notes Yet, Add your First Note by Clicking on Add Note button</h2> </div> : <div className="container mt-4">
-        <div className="grid grid-cols-12 gap-8">
+      {(notesError === "not notes found") ? <div className="container flex justify-center items-center mt-6"><h2 className="text-center font-semibold text-xl">No Notes Yet, Add your First Note by Clicking on Add Note button</h2> </div> : <div className="container mt-4">
+        <div className="px-4 grid grid-cols-12 gap-8">
           {notesInfo
             ? notesInfo.map((note) => (
-                <div key={note._id} className="col-span-4">
+                <div key={note._id} className="col-span-12 md:col-span-6 lg:col-span-4">
                   <NoteDetails noteInfo={note} />
                 </div>
               ))

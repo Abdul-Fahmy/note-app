@@ -9,13 +9,13 @@ export default function NavBar() {
   return (
     <>
       <section className="navBar bg-black text-white">
-        <div className="container flex justify-around items-center py-4 px-6">
+        <div className="container flex justify-around items-center py-4">
           <div className="logo">
             <h1 className="text-2xl uppercase font-semibold">Note App</h1>
           </div>
 
           <div className="tabs">
-            <NavLink
+            {token ? <NavLink
               to={"/"}
               className={({ isActive }) => {
                 return `px-4 py-2 hover:border-solid hover:border-white hover:border hover:rounded-md  ${
@@ -24,7 +24,7 @@ export default function NavBar() {
               }}
             >
               Home
-            </NavLink>
+            </NavLink> : ''}
           </div>
 
           <div className="logs ">

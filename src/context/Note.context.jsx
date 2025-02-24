@@ -31,7 +31,6 @@ async function getUserNotes() {
         
         
     } catch (error) {
-        console.log(error.response.data.msg);
         setNotesError(error.response.data.msg)
         
     }
